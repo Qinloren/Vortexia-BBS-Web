@@ -1,0 +1,61 @@
+@use "@/assets/scss/base";
+@use "sass:color";
+
+.quick-action-box {
+  background: base.$body-background-white;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  .quick-action-title {
+    color: base.$text-color-black;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  .action-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    .btn {
+      color: base.$body-background-white;
+      padding: 12px 24px;
+      border-radius: 4px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      i {
+        font-weight: 900;
+        margin-right: 4px;
+        font-size: 16px;
+      }
+    }
+    .create-topic-btn {
+      background: base.$theme-color;
+      border: 1px solid base.$theme-color-dark;
+      &:hover {
+        background: base.$theme-color-dark;
+        box-shadow: 0 0 5px base.$theme-color-dark;
+      }
+    }
+    .push-post-btn {
+      background: base.$quick-push-post-color;
+      border: 1px solid base.$quick-push-post-color-dark;
+      &:hover {
+        background: base.$quick-push-post-color-dark;
+        box-shadow: 0 0 5px base.$quick-push-post-color-dark;
+      }
+    }
+    .search-topic-btn {
+      background: base.$quick-search-topic-color;
+      border: 1px solid base.$quick-search-topic-color-dark;
+      &:hover {
+        background: base.$quick-search-topic-color-dark;
+        box-shadow: 0 0 5px base.$quick-search-topic-color-dark;
+      }
+    }
+  }
+}

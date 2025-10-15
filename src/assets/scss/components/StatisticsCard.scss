@@ -1,0 +1,38 @@
+@use "@/assets/scss/base";
+@use "sass:color";
+
+.community-statistics-card {
+  margin-bottom: 24px;
+  padding: 24px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: base.$body-background-white;
+  border-radius: 8px;
+  .community-statistics-title {
+    color: base.$text-color-black;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 15px;
+  }
+  .community-statistics-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    .community-statistics-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .community-statistics-label {
+        color: base.$text-color-dark;
+        font-size: 16px;
+        line-height: 20px;
+      }
+      .community-statistics-value {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 28px;
+      }
+    }
+  }
+}

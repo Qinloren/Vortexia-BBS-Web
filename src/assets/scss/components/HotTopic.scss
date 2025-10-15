@@ -1,0 +1,36 @@
+@use "@/assets/scss/base";
+@use "sass:color";
+
+.hot-topic-box {
+  background: base.$body-background-white;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  .hot-topic-box-title {
+    color: base.$text-color-black;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 15px;
+  }
+  .hot-topic-box-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    .hot-topic-box-list-item {
+      color: base.$text-color-dark;
+      font-size: 14px;
+      line-height: 20px;
+      padding: 8px 12px;
+      background: base.$hot-topic-background;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: color .3s ease,
+      background .3s ease;
+      &:hover {
+        background: color.adjust(base.$theme-color-light, $lightness: 38%);
+        color: base.$theme-color;
+      }
+    }
+  }
+}

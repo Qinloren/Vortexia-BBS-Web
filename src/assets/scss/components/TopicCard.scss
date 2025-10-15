@@ -1,0 +1,144 @@
+@use "@/assets/scss/base";
+@use "sass:color";
+
+.topic-card {
+  background: base.$body-background-white;
+  padding: 24px;
+  border-color: base.$body-background;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-width: 1px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .3s ease;
+  .card-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    .card-avatar {
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      width: 64px;
+      height: 64px;
+      img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
+    }
+    .card-title {
+      flex: 1 1 0;
+      margin-left: 15px;
+      .card-title-text {
+        color: base.$text-color-black;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 4px;
+      }
+      .card-title-desc {
+        display: flex;
+        align-items: center;
+        .classify-list-item-icon {
+          color: base.$theme-color;
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: 900;
+        }
+        .card-title-desc-text {
+          color: base.$text-color-dark;
+          font-size: 14px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+  .card-introduction {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: base.$text-color-dark;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 15px;
+  }
+  .card-data-info {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+    margin-bottom: 15px;
+    .card-data-item {
+      text-align: center;
+      .card-data-item-size {
+        color: base.$text-color-black;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+      }
+      .card-data-item-text {
+        color: base.$text-color-dark;
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
+  }
+  .card-tips {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    line-height: 20px;
+    color: base.$text-color-dark;
+    margin-bottom: 15px;
+  }
+  .action-box {
+    display: flex;
+    align-items: center;
+    .join-topic-btn {
+      color: base.$body-background-white;
+      padding: 8px 16px;
+      background: base.$theme-color;
+      border-radius: 4px !important;
+      white-space: nowrap;
+      cursor: pointer;
+      flex: 1 1 0;
+      border: 1px solid base.$theme-color-dark;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      font-size: 16px;
+      line-height: 20px;
+      .join-topic-btn-icon {
+        margin-right: 8px;
+      }
+      &:hover {
+        background: color.adjust(base.$theme-color, $lightness: -5%);
+        box-shadow: 0 0 10px color.adjust(base.$theme-color, $lightness: 15%);
+      }
+    }
+    .like-btn {
+      margin-right: 8px;
+      transition: all 0.3s ease;
+      padding: 0;
+      font-size: 18px;
+      line-height: 18px;
+      color: base.$text-color-light;
+      cursor: pointer;
+      background-color: transparent;
+      background-image: none;
+      -webkit-appearance: button;
+      border: none;
+      outline: none;
+      &:hover {
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
+        color: base.$theme-color;
+      }
+    }
+  }
+}

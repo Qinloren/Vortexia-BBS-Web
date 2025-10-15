@@ -1,0 +1,23 @@
+@use "@/assets/scss/base";
+@use "sass:color";
+
+.message-page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  .message-page-container {
+    width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    .content-box {
+      z-index: 9;
+      flex: 1;
+    }
+    .dash-box {
+      width: 320px;
+      flex-shrink: 0;
+    }
+  }
+}

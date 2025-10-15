@@ -1,0 +1,54 @@
+@use "@/assets/scss/base";
+@use "sass:color";
+.community-page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  .community-page-container {
+    width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    .content-box {
+      z-index: 9;
+      flex: 1;
+      .filter-box {
+        background: base.$body-background-white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 24px;
+        .filter-list {
+          list-style-type: none;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 15px;
+          .filter-list-item {
+            padding-bottom: 8px;
+            font-weight: 500;
+            border-color: transparent;
+            border-bottom-width: 2px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            &:hover,
+            &.active {
+              color: base.$theme-color;
+            }
+          }
+        }
+      }
+      .topic-list {
+        display: grid;
+        grid-template-columns: repeat(3,  minmax(0, 1fr));
+        gap: 15px;
+      }
+    }
+    .dash-box {
+      width: 320px;
+      flex-shrink: 0;
+    }
+  }
+}

@@ -1,0 +1,142 @@
+@use "@/assets/scss/base";
+@use "sass:color";
+.home-page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  .home-page-container {
+    width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 16px;
+    .classify-box {
+      width: 256px;
+      background: base.$body-background-white;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      height: fit-content;
+      padding: 15px;
+      .classify-box-title {
+        color: base.$text-color-black;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 16px;
+      }
+      .classify-box-list {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        .classify-list-item {
+          padding: 12px;
+          transition: color .3s ease,
+          background .3s ease;
+          &:hover,
+          &.active {
+            background: color.adjust(base.$theme-color-light, $lightness: 38%);
+            border-radius: 8px;
+            a {
+              color: base.$theme-color;
+            }
+          }
+          a {
+            color: base.$text-color-black;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 8px;
+            text-decoration: none;
+            .classify-list-item-icon {
+              font-size: 18px;
+              line-height: 28px;
+              font-weight: 900;
+              margin-right: 12px;
+            }
+            .classify-list-item-title {
+              margin-right: 12px;
+            }
+            .classify-list-item-size {
+              font-size: 12px;
+              line-height: 16px;
+              color: base.$text-color-dark;
+            }
+          }
+        }
+      }
+    }
+    .content-box {
+      z-index: 9;
+      flex: 1;
+      .filter-box {
+        background: base.$body-background-white;
+        padding: 15px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        margin-bottom: 24px;
+        .filter-list {
+          display: flex;
+          align-items: center;
+          list-style-type: none;
+          gap: 15px;
+          .filter-list-item {
+            font-weight: 500;
+            padding-bottom: 8px;
+            border-color: transparent;
+            border-bottom-width: 2px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: color .3s ease,
+                        border-color .3s ease,
+                        background .3s ease;
+            &:hover,
+            &.active {
+              color: base.$theme-color;
+            }
+          }
+        }
+      }
+      .content-box {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+    }
+    .dash-box {
+      z-index: 9;
+      width: 320px;
+      flex-shrink: 0;
+      gap: 24px;
+      display: flex;
+      flex-direction: column;
+      .quickly-push-btn {
+        padding: 8px 20px;
+        width: 100%;
+        cursor: pointer;
+        border-radius: 8px;
+        background-color: base.$theme-color;
+        color: base.$body-background-white;
+        border: 1px solid base.$theme-color;
+        transition: color .3s ease,
+                    background .3s ease,
+                    border-color .3s ease,
+                    box-shadow .3s ease;
+        margin: 0 !important;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+          box-shadow: 0 0 8px color.adjust(base.$theme-color, $lightness: -5%);
+        }
+        i {
+          font-weight: 900;
+          margin-right: 4px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

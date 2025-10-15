@@ -1,0 +1,126 @@
+@use "sass:color";
+
+$header-height: 64px;
+$theme-color: #F48020;
+$theme-color-light: #F58E38;
+$theme-color-dark: #EF730C;
+$border-color: #D1D5DB;
+$text-color: #6B737F;
+$text-color-light: #77808C;
+$text-color-dark: #5F6671;
+$text-color-black: #000000;
+$body-background: #F9FAFB;
+$body-background-white: #FFFFFF;
+$hot-topic-background: #F3F4F6;
+$quick-push-post-color: #16A34A;
+$quick-push-post-color-dark: #138D40;
+$quick-search-topic-color: #EA580C;
+$quick-search-topic-color-dark: #D24F0B;
+$btn-disabled-color: #CED2D8;
+
+.bg-theme {
+  background-color: $theme-color;
+}
+.bg-theme-light {
+  background-color: $theme-color-light;
+}
+.bg-theme-light-2 {
+  background-color: color.adjust($theme-color-light, $lightness: 20%);
+}
+.bg-theme-light-3 {
+  background-color: color.adjust($theme-color-light, $lightness: 30%);
+}
+.border-theme-dark {
+  border-color: $theme-color-dark;
+}
+.border-theme {
+  border-color: $theme-color;
+}
+.border-theme-light {
+  border-color: $theme-color-light;
+}
+.border-theme-light-2 {
+  border-color: color.adjust($theme-color-light, $lightness: 20%);
+}
+.border-theme-dark {
+  border-color: $theme-color-dark;
+}
+.color-theme {
+  color: $theme-color;
+}
+.color-theme-light {
+  color: $theme-color-light;
+}
+.color-theme-dark {
+  color: $theme-color-dark;
+}
+.color-theme-dark-2 {
+  color: color.adjust($theme-color-dark, $lightness: -5%);
+}
+.border-theme {
+  border-color: $theme-color;
+}
+.border-theme-light {
+  border-color: $theme-color-light;
+}
+.border-theme-dark {
+  border-color: $theme-color-dark;
+}
+.border-theme-dark-2 {
+  border-color: color.adjust($theme-color-dark, $lightness: -5%);
+}
+.color-text {
+  color: $text-color;
+}
+.color-text-light {
+  color: $text-color-light;
+}
+.color-text-dark {
+  color: $text-color-dark;
+}
+.color-text-dark-2 {
+  color: color.adjust($text-color-dark, $lightness: -5%);
+}
+
+.btn {
+  padding: 10px 20px;
+  margin: 0 8px;
+  background: $body-background;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  cursor: pointer;
+  color: $text-color-dark;
+  transition: background-color .3s ease,
+      box-shadow .3s ease;
+  &:hover {
+    background-color: color.adjust($body-background, $lightness: -2%);
+    border-color: color.adjust($border-color, $lightness: -2%);
+    box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s ease-in-out,
+              transform .5s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.fade-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.fade-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}

@@ -45,7 +45,7 @@ const hotTopics = [
 
 export default [
   {
-    url: "/api/hotTopic/list",
+    url: "/mock/api/hotTopic/list",
     method: "get",
     response: () => {
       return {
@@ -56,7 +56,7 @@ export default [
     },
   },
   {
-    url: "/api/hotTopic/detail",
+    url: "/mock/api/hotTopic/detail",
     method: "get",
     response: ({ query }) => {
       return {

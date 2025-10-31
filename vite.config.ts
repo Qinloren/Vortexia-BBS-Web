@@ -7,12 +7,13 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import Icons from "unplugin-icons/vite"
 import Components from "unplugin-vue-components/vite";
 import IconResolver from "unplugin-icons/resolver";
-import { viteMockServe } from "vite-plugin-mock";
+// import { viteMockServe } from "vite-plugin-mock";
 import UnoCSS from "unocss/vite";
 import { presetAttributify, presetIcons, presetWind4 } from 'unocss'
 
 // https://vite.dev/config/
-export default defineConfig(({ command }) => {
+// export default defineConfig(({ command }) => {
+export default defineConfig(() => {
   return {plugins: [
       UnoCSS({
         presets: [
@@ -24,10 +25,10 @@ export default defineConfig(({ command }) => {
       vue(),
       vueJsx(),
       vueDevTools(),
-      viteMockServe({
-        mockPath: "mock",
-        enable: command === "serve",
-      }),
+      // viteMockServe({
+      //   mockPath: "mock",
+      //   enable: command === "serve",
+      // }),
       Icons({
         compiler: "vue3",
         autoInstall: true
@@ -58,13 +59,12 @@ export default defineConfig(({ command }) => {
     server: {
       host: "0.0.0.0",
       port: 5173,
-      // proxy: {
-      //   "api": {
-      //     target: "http://localhost:5173",
-      //     changeOrigin: true,
-      //     rewrite: (path) => path.replace(/^\/api/, "")
-      //   }
-      // }
+      proxy: {
+        "/api": {
+          target: "http://localhost:26500",
+          changeOrigin: true
+        }
+      }
     }
   }
 })

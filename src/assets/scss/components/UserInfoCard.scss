@@ -1,4 +1,4 @@
-@use "@/assets/scss/base";
+@use "../base";
 @use "sass:color";
 
 .info-box {
@@ -15,6 +15,21 @@
       border-radius: 9999px;
       object-fit: cover;
       margin: 0 auto 12px auto;
+      cursor: pointer;
+      animation: infiniteRotation 3s linear infinite;
+      animation-play-state: paused;
+      &:hover {
+        animation-play-state: running;
+      }
+
+      @keyframes infiniteRotation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     }
     .user-info-name {
       color: base.$text-color-black;

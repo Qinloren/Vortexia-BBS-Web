@@ -1,4 +1,4 @@
-@use "@/assets/scss/base";
+@use "../base";
 @use "sass:color";
 .home-page {
   width: 100%;
@@ -32,8 +32,7 @@
         gap: 15px;
         .classify-list-item {
           padding: 12px;
-          transition: color .3s ease,
-          background .3s ease;
+          transition: background .3s ease;
           &:hover,
           &.active {
             background: color.adjust(base.$theme-color-light, $lightness: 38%);
@@ -49,6 +48,7 @@
             cursor: pointer;
             border-radius: 8px;
             text-decoration: none;
+            transition: color .3s ease;
             .classify-list-item-icon {
               font-size: 18px;
               line-height: 28px;

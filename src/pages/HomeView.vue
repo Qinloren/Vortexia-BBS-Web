@@ -2,9 +2,15 @@
 import { onMounted, reactive } from 'vue'
 import PostCard from '@/components/PostCard.vue'
 import RecommendCard from '@/components/RecommendCard.vue'
-import type { ClassifyType, HotTopicType, PostType, RecommendFollowType } from '@/components/index.types.ts'
+import type {
+  ClassifyType,
+  HotTopicType,
+  PostType,
+  RecommendFollowType,
+} from '@/components/index.types.ts'
 import HotTopic from '@/components/HotTopic.vue'
 import UserInfoCard from '@/components/UserInfoCard.vue'
+import { Icon } from '@iconify/vue'
 import { formatNumber, formatTimestamp } from '@/utils/format.ts'
 import { findClassifies } from '@/api/classify.ts'
 import { findPosts } from '@/api/post.ts'
@@ -12,7 +18,7 @@ import { useRouter } from 'vue-router'
 import { findHotTopics } from '@/api/hotTopic.ts'
 import { findFollows } from '@/api/follow.ts'
 
-const router = useRouter();
+const router = useRouter()
 
 const data = reactive({
   classifies: [] as ClassifyType[],
@@ -22,19 +28,19 @@ const data = reactive({
   followSize: 256,
   hotTopic: [] as HotTopicType[],
   follows: [] as RecommendFollowType[],
-  posts: [] as PostType[]
+  posts: [] as PostType[],
 })
 
 onMounted(async () => {
   // 获取数据
   const classifies = await findClassifies()
-  data.classifies = classifies.data;
-  const posts = await findPosts()
-  data.posts = posts.data;
+  data.classifies = classifies.data.content;
+  const posts = await findPosts(1, 10)
+  data.posts = posts.data
   const hotTopics = await findHotTopics()
-  data.hotTopic = hotTopics.data;
-  const follows = await findFollows();
-  data.follows = follows.data;
+  data.hotTopic = hotTopics.data
+  const follows = await findFollows()
+  data.follows = follows.data
 })
 
 /**
@@ -43,21 +49,20 @@ onMounted(async () => {
  */
 const onCardClick = (itemId: number) => {
   router.push({
-    name: "article",
+    name: 'article',
     params: {
-      id: itemId
-    }
+      id: itemId,
+    },
   })
 }
 
 const onClickHotTopic = (itemId: number) => {
-  console.log(itemId);
+  console.log(itemId)
 }
 
 const onApplyFilter = (type: string) => {
-  console.log(type);
+  console.log(type)
 }
-
 </script>
 
 <template>
@@ -66,16 +71,20 @@ const onApplyFilter = (type: string) => {
       <div class="classify-box">
         <h3 class="classify-box-title">分类导航</h3>
         <ul class="classify-box-list">
-          <li class="classify-list-item"
-              v-for="(item, index) in data.classifies"
-              :class="{
-                'active': data.classifyIndex === index
-              }"
-              :key="index">
+          <li
+            class="classify-list-item"
+            v-for="(item, index) in data.classifies"
+            :class="{
+              active: data.classifyIndex === index,
+            }"
+            :key="index"
+          >
             <a href="javascript:void(0);">
 <!--              <i class="classify-list-item-icon" :class="`i-${item.icon}`"></i>-->
+<!--              <i class="classify-list-item-icon" :class="`i-${item.icon}`"></i>-->
+              <Icon :icon="item.icon" class="classify-list-item-icon"/>
               <span class="classify-list-item-title">{{ item.name }}</span>
-              <span class="classify-list-item-size">{{ formatNumber(item.size) }}</span>
+              <span class="classify-list-item-size">{{ formatNumber(item.postSize) }}</span>
             </a>
           </li>
         </ul>
@@ -90,29 +99,30 @@ const onApplyFilter = (type: string) => {
           </ul>
         </div>
         <div class="content-box">
-            <PostCard
-                v-for="(item, index) in data.posts"
-                :key="index"
-                :avatar="item.author.avatar"
-                :id="item.id"
-                :author-name="item.author.nickname"
-                :push-time="formatTimestamp(item.updateTime)"
-                :classify-name="item.classify"
-                :title="item.title"
-                :like-size="formatNumber(item.likeSize)"
-                :comment-size="formatNumber(item.commentSize)"
-                :classifies="item.classifies"
-                @card-click="onCardClick(item.id)"
-                >{{ item.introduction }}</PostCard>
+          <PostCard
+            v-for="(item, index) in data.posts"
+            :key="index"
+            :avatar="item.author.avatar"
+            :id="item.id"
+            :author-name="item.author.nickname"
+            :push-time="formatTimestamp(item.updateTime)"
+            :classify-name="item.classify"
+            :title="item.title"
+            :like-size="formatNumber(item.likeSize)"
+            :comment-size="formatNumber(item.commentSize)"
+            :classifies="item.classifies"
+            @card-click="onCardClick(item.id)"
+            >{{ item.introduction }}</PostCard
+          >
         </div>
       </div>
       <div class="dash-box">
         <UserInfoCard
-            name="用户昵称"
-            identifier="活跃用户"
-            :post-size="formatNumber(data.postSize)"
-            :like-size="formatNumber(data.likeSize)"
-            :follow-size="formatNumber(data.followSize)"
+          name="用户昵称"
+          identifier="活跃用户"
+          :post-size="formatNumber(data.postSize)"
+          :like-size="formatNumber(data.likeSize)"
+          :follow-size="formatNumber(data.followSize)"
         >
           <template #action>
             <button class="btn quickly-push-btn">
@@ -121,7 +131,7 @@ const onApplyFilter = (type: string) => {
             </button>
           </template>
         </UserInfoCard>
-        <HotTopic :topics="data.hotTopic" @hot-topic-click="onClickHotTopic"/>
+        <HotTopic :topics="data.hotTopic" @hot-topic-click="onClickHotTopic" />
         <RecommendCard :follows="data.follows" />
       </div>
     </div>
@@ -129,5 +139,5 @@ const onApplyFilter = (type: string) => {
 </template>
 
 <style lang="scss">
-@use "@/assets/scss/pages/HomeView";
+@use '@/assets/scss/pages/HomeView';
 </style>

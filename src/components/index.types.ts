@@ -44,7 +44,9 @@ export interface ClassifyType {
   id: number,
   name: string,
   icon: string,
-  size: number,
+  postSize: number,
+  status: number,
+  createTime: number,
 }
 
 export interface TopicType {

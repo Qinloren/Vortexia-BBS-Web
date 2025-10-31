@@ -1,5 +1,9 @@
 <script setup lang="ts">
 defineProps({
+  avatar: {
+    type: String,
+    default: "/images/avatar.jpg"
+  },
   name: String,
   identifier: String,
   postSize: String,
@@ -11,7 +15,7 @@ defineProps({
 <template>
   <div class="info-box">
     <div class="user-info">
-      <img src="https://api.horosama.com/random.php" alt="AVATAR" class="user-info-avatar">
+      <img src="" alt="AVATAR" class="user-info-avatar">
       <h3 class="user-info-name">{{ name }}</h3>
       <p class="user-info-identifier">{{ identifier }}</p>
     </div>
